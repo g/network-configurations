@@ -10,4 +10,5 @@ fpm -s dir -t deb \
     --deb-config debian/config \
     --depends dnsmasq \
     --depends hostapd \
+    --depends python-empy \
     ./templates

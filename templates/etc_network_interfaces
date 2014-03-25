@@ -12,6 +12,7 @@ iface br0 inet static
   bridge_ports eth0 @[if wifi_ap == 'true' ]wlan0 @[end if]
 @[if wifi_ap != 'true' ]@
   gateway @(gateway_ip)
+  dns-nameservers 8.8.8.8 8.8.4.4
 @[end if]@
 
 @[if wifi_ap == 'true' ]@

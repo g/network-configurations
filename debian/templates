@@ -1,30 +1,30 @@
 Template: grizzly-network/ip
 Type: string
 Default: 192.168.1.1
-Description: Grizzly PC IP address.
+Description: What is this PC's IP address?
  Specify the ipv4 address which this PC will use on its eth0/br0 interface.
 
 Template: grizzly-network/wifi_ap
 Type: boolean
-Default: true
-Description: Host Grizzly wireless AP.
+Default: false
+Description: Host Grizzly wireless AP?
  Specify whether this PC should provide the Grizzly wireless access point.
 
 Template: grizzly-network/wifi_ssid
 Type: string
 Default: GRIZZLY
-Description: Grizzly access point SSID
+Description: Grizzly access point SSID?
  Specify the SSID to use for the Grizzly wireless access point.
 
 Template: grizzly-network/wifi_password
 Type: string
 Default: clearpath
-Description: Grizzly access point password
+Description: Grizzly access point password?
  Specify the password to use for the Grizzly wireless access point.
 
 Template: grizzly-network/gateway_ip
 Type: string
 Default: 192.168.1.2
-Description: 
+Description: Grizzly br0 gateway IP?
  When this machine is not providing the wireless AP, what IP should it look to for a gateway to the internet? This should be the IP of
- the computer providing the wireless AP, DHCP server, NAT, and WAN port.
+ the computer providing the NAT and WAN port.

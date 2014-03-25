@@ -1,11 +1,10 @@
-#!/bin/sh -e
+#!/bin/sh
+set -e
 . /usr/share/debconf/confmodule
 
 db_input medium grizzly-network/ip || true
 db_input medium grizzly-network/wifi_ap || true
 db_go
-
-echo "aaa"
 
 db_get grizzly-network/wifi_ap
 if [ "$RET" = "true" ]; then
@@ -17,5 +16,3 @@ else
   db_input low grizzly-network/gateway_ip || true 
 fi
 db_go
-
-echo "bbb"

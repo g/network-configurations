@@ -1,4 +1,9 @@
+# GENERATED CONFIGURATION FILE. DO NOT EDIT.
+
 start on (local-filesystems
+@[if wifi_ap != 'true']@
+          and 0  # Wifi AP is disabled 
+@[end if]@
           and net-device-added INTERFACE=wlan0
           and net-device-added INTERFACE=br0
           and net-device-added INTERFACE=eth1)

@@ -2,5 +2,21 @@
 #!/bin/bash -e
 . /usr/share/debconf/confmodule
 
-db_get grizzly-network/wifi_ap
+TEMPLATE_PATH=/usr/share/grizzly-network/templates
+PY_DEFINES=""
 
+for VAR in ip wifi_ap wifi_ssid wifi_password gateway_ip
+do
+  db_get grizzly-network/$VAR
+  PY_DEFINES="$VAR='$RET';$PY_DEFINES"
+  # export $VAR=$RET
+done
+
+/usr/bin/env python -m em --define "$PY_DEFINES" \
+    $TEMPLATE_PATH/etc_network_interfaces > /etc/network/interfaces
+/usr/bin/env python -m em --define "$PY_DEFINES" \
+    $TEMPLATE_PATH/etc_dnsmasq_conf > /etc/dnsmasq.d/10-grizzly-ap
+/usr/bin/env python -m em --define "$PY_DEFINES" \
+    $TEMPLATE_PATH/etc_hostapd_hostapd_conf > /etc/hostapd/hostapd.conf
+/usr/bin/env python -m em --define "$PY_DEFINES" \
+    $TEMPLATE_PATH/etc_init_ap_conf > /etc/init/ap.conf

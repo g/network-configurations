@@ -1,3 +1,5 @@
+# GENERATED CONFIGURATION FILE. DO NOT EDIT. 
+
 auto lo br0
 iface lo inet loopback
 
@@ -12,7 +14,7 @@ iface br0 inet static
   gateway @(gateway_ip)
 @[end if]@
 
-@[if wifi_ap]@
+@[if wifi_ap == 'true' ]@
 # Label eth1 port as "WAN"; it's for connecting to the outside world.
 auto eth1
 iface eth1 inet dhcp

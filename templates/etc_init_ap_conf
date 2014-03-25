@@ -18,7 +18,7 @@ pre-start script
  
         sysctl -w net.ipv4.ip_forward=1
  
-        dnsmasq > /tmp/dnsmasq.log
+        dnsmasq --conf-dir=/etc/dnsmasq.d > /tmp/dnsmasq.log
         hostapd -B /etc/hostapd/hostapd.conf > /tmp/hostapd.log
 end script
  

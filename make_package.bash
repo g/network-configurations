@@ -8,6 +8,6 @@ fpm -s dir -t deb \
     --after-install debian/postinst \
     --deb-templates debian/templates \
     --deb-config debian/config \
-    --depends dnsmasq
-    --depends hostapd
+    --depends dnsmasq \
+    --depends hostapd \
     ./templates

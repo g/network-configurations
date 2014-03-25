@@ -9,8 +9,8 @@ iface br0 inet static
   network 192.168.1.0
   broadcast 192.168.1.255
   netmask 255.255.255.0
-  bridge_ports eth0 @[if wifi_ap] wlan0 @[end if]
-@[if not wifi_ap]@
+  bridge_ports eth0 @[if wifi_ap == 'true' ]wlan0 @[end if]
+@[if wifi_ap != 'true' ]@
   gateway @(gateway_ip)
 @[end if]@
 

@@ -1,0 +1,21 @@
+#!/bin/sh -e
+. /usr/share/debconf/confmodule
+
+db_input medium grizzly-network/ip || true
+db_input medium grizzly-network/wifi_ap || true
+db_go
+
+echo "aaa"
+
+db_get grizzly-network/wifi_ap
+if [ "$RET" = "true" ]; then
+  # Further options for wifi AP mode.
+  db_input low grizzly-network/wifi_ssid || true
+  db_input low grizzly-network/wifi_password || true
+else
+  # Need to specify this when not wifi AP, but it's usually the default.
+  db_input low grizzly-network/gateway_ip || true 
+fi
+db_go
+
+echo "bbb"

@@ -1,0 +1,6 @@
+
+#!/bin/bash -e
+. /usr/share/debconf/confmodule
+
+db_get grizzly-network/wifi_ap
+

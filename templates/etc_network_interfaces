@@ -1,0 +1,19 @@
+auto lo br0
+iface lo inet loopback
+
+# Label eth0 port as "LAN", plug into robot switch
+iface br0 inet static
+  address @(ip)
+  network 192.168.1.0
+  broadcast 192.168.1.255
+  netmask 255.255.255.0
+  bridge_ports eth0 @[if wifi_ap] wlan0 @[end if]
+@[if not wifi_ap]@
+  gateway @(gateway_ip)
+@[end if]@
+
+@[if wifi_ap]@
+# Label eth1 port as "WAN"; it's for connecting to the outside world.
+auto eth1
+iface eth1 inet dhcp
+@[end if]

@@ -1,0 +1,4 @@
+# GENERATED CONFIGURATION FILE. DO NOT EDIT.
+@{ ip_subnet = ".".join(ip.split(".")[0:-1]) }@
+interface=br0
+dhcp-range=@(ip_subnet).100,@(ip_subnet).200,12h

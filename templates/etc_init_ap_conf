@@ -1,0 +1,23 @@
+start on (local-filesystems
+          and net-device-added INTERFACE=wlan0
+          and net-device-added INTERFACE=br0
+          and net-device-added INTERFACE=eth1)
+ 
+pre-start script
+        # Setup NAT to shuttle requests between the bridge and gateway.
+        iptables --flush
+        iptables --table nat --flush
+        iptables --delete-chain
+        iptables --table nat --delete-chain
+        iptables --table nat --append POSTROUTING --out-interface eth1 -j MASQUERADE
+ 
+        sysctl -w net.ipv4.ip_forward=1
+ 
+        dnsmasq > /tmp/dnsmasq.log
+        hostapd -B /etc/hostapd/hostapd.conf > /tmp/hostapd.log
+end script
+ 
+post-stop script
+        killall dnsmasq
+        killall hostapd
+end script

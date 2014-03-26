@@ -2,8 +2,8 @@
 set -e
 . /usr/share/debconf/confmodule
 
-db_input medium grizzly-network/ip || true
-db_input medium grizzly-network/wifi_ap || true
+db_input high grizzly-network/ip || true
+db_input high grizzly-network/wifi_ap || true
 db_go
 
 db_get grizzly-network/wifi_ap

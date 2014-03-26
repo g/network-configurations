@@ -5,11 +5,10 @@
 TEMPLATE_PATH=/usr/share/grizzly-network/templates
 PY_DEFINES=""
 
-for VAR in ip wifi_ap wifi_ssid wifi_password gateway_ip
+for VAR in ip wifi_ap wifi_ssid wifi_password gateway_ip dns_ip
 do
   db_get grizzly-network/$VAR
   PY_DEFINES="$VAR='$RET';$PY_DEFINES"
-  # export $VAR=$RET
 done
 
 /usr/bin/env python -m em --define "$PY_DEFINES" \

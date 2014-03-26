@@ -14,5 +14,6 @@ if [ "$RET" = "true" ]; then
 else
   # Need to specify this when not wifi AP, but it's usually the default.
   db_input low grizzly-network/gateway_ip || true 
+  db_input low grizzly-network/dns_ip || true 
 fi
 db_go

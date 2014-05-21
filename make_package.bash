@@ -3,7 +3,7 @@
 fpm -s dir -t deb \
     --name "grizzly-network" \
     --prefix "/usr/share/grizzly-network" \
-    --version 0.1.1 \
+    --version 0.1.2 \
     --architecture all \
     --after-install debian/postinst \
     --deb-templates debian/templates \
